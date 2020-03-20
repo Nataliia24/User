@@ -1,0 +1,53 @@
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+            <h2>Create user</h2>
+            <h3>Address information</h3>
+            <form [formGroup]="formGroup">
+                <div class="form-group">
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Adress type</mat-label>
+                        <mat-select>
+                            <mat-option *ngFor="let address of addresses" [value]="address.value">
+                                {{address.viewValue}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+
+                <div class="form-group">
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Address</mat-label>
+                        <input matInput placeholder="Address">
+                    </mat-form-field>
+                </div>
+
+                <div class="form-group d-flex justify-content-between">
+                    <mat-form-field>
+                        <mat-label>City</mat-label>
+                        <input matInput placeholder="City">
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-label>Country</mat-label>
+                        <mat-select placeholder="Country" formControlName="country" (selectionChange)="getStateByCountry($event.value)">
+                            <mat-option *ngFor="let item of countryArray" value="{{item}}">{{item}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+
+                <div class="form-group">
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Portal code</mat-label>
+                        <input matInput placeholder="Portal" type="number">
+                    </mat-form-field>
+                </div>
+
+                <div class="example-button-row">
+                    <button class="btn-1" mat-raised-button routerLink="/create">Previous</button>
+                    <button mat-raised-button disabled>Next</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
