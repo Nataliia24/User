@@ -18,6 +18,7 @@ import { MatSelectModule } from '@angular/material/select';
   declarations: [
     AppComponent,
     CompareValidatorDirective
+    
   ],
   imports: [
     BrowserModule,

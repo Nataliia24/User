@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { AddressService } from 'src/app/modules/address/address.service';
-import { environment } from 'src/environments/environment';
-import { FormGroup } from '@angular/forms';
-
-
+import { Country } from './country.model';
+import { DataService } from './data.service';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 interface Address {
   value: string;
@@ -17,36 +15,30 @@ interface Address {
 })
 export class AddressComponent implements OnInit {
 
-  countryArray: any = [];
-  stateArray: any = [];
-  
+  addressForm: FormGroup;
+
+  countries$: Country[];
+
   addresses: Address[] = [
     {value: 'home-0', viewValue: 'Home Address'},
     {value: 'billiding-1', viewValue: 'Billiding Address'},
     {value: 'shipment-2', viewValue: 'Shipment Address'}
   ];
 
+  address = new FormControl('', [Validators.required]);
 
-  constructor(private apiHandler: AddressService) { }
+  constructor(private dataService: DataService) { }
 
-  ngOnInit() {
-		this.countryArray = [];
-		this.apiHandler.getApiRequest(this.countryArray).subscribe((data) => {
-			data.forEach((item) => {
-				this.countryArray.push(item.country_name);
-			});
-		});
+  ngOnInit(): void {
+    this.dataService.getCountries()
+    .subscribe(data => this.countries$ = data);
   }
 
-  getStateByCountry(country: string) {
-		this.stateArray = [];
-		this.apiHandler.getApiRequest(this.stateArray + country).subscribe((data) => {
-			data.forEach((item) => {
-				this.stateArray.push(item.state_name);
-			});
-		});
-	}
-  
+  getErrorMessage() {
+    if (this.address.hasError('required')) {
+      return 'You must enter a value';
+    }
 
+    return this.address.hasError('address') ? 'Not a valid address' : '';
+  }
 }
-

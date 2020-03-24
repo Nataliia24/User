@@ -7,8 +7,8 @@ import { RouterModule } from '@angular/router';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { CreateComponent } from 'src/app/modules/create/create.component';
-import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { AddressComponent } from 'src/app/modules/address/address.component';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -17,7 +17,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
 
 
-
+import { HttpClientModule } from '@angular/common/http';
+import { DataService } from 'src/app/modules/address/data.service';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { MatButtonModule } from '@angular/material/button';
     UserinfoComponent,
     CreateComponent,
     AddressComponent
+    
   ],
   imports: [
     CommonModule,
@@ -38,7 +40,9 @@ import { MatButtonModule } from '@angular/material/button';
     MatFormFieldModule,
     MatInputModule,
     MatSelectModule,
-    MatButtonModule
-]
+    MatButtonModule,
+    HttpClientModule
+],
+providers: [DataService],
 })
 export class DefaultModule { }
