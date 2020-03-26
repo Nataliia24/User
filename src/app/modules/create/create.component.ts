@@ -14,8 +14,8 @@ export class CreateComponent implements OnInit {
 
   constructor(private http: HttpClient, public fb: FormBuilder) {
     this.signupForm = this.fb.group({
-      firstName: ['hgngn'],
-      lastName: ['hgmhg']
+      firstName: [''],
+      lastName: ['']
     })
    }
 
