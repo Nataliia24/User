@@ -5,6 +5,7 @@ import { MainComponent } from './modules/main/main.component';
 import { UserinfoComponent } from './modules/userinfo/userinfo.component';
 import { CreateComponent } from './modules/create/create.component';
 import { AddressComponent } from './modules/address/address.component';
+import { UserComponent } from './modules/user/user.component';
 
 
 const routes: Routes = [{
@@ -24,6 +25,10 @@ const routes: Routes = [{
   {
     path: 'address',
     component: AddressComponent
+  },
+  {
+    path: 'user',
+    component: UserComponent
   }]
 }];
 

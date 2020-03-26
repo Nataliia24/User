@@ -25,20 +25,20 @@ export class AddressComponent implements OnInit {
     {value: 'shipment-2', viewValue: 'Shipment Address'}
   ];
 
-  address = new FormControl('', [Validators.required]);
 
   constructor(private dataService: DataService) { }
 
   ngOnInit(): void {
     this.dataService.getCountries()
     .subscribe(data => this.countries$ = data);
+
+    this.addressForm = new FormGroup({
+      'type': new FormControl(null, [Validators.required]),
+      'address': new FormControl(null, [Validators.required]),
+      'city': new FormControl(null, [Validators.required]),
+      'country': new FormControl(null, [Validators.required]),
+      'code': new FormControl(null, [Validators.required, Validators.pattern("[0-9 ]{12}")])
+    });
   }
 
-  getErrorMessage() {
-    if (this.address.hasError('required')) {
-      return 'You must enter a value';
-    }
-
-    return this.address.hasError('address') ? 'Not a valid address' : '';
-  }
 }

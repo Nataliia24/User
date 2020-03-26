@@ -8,6 +8,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { CreateComponent } from 'src/app/modules/create/create.component';
 import { AddressComponent } from 'src/app/modules/address/address.component';
+import { UserComponent } from 'src/app/modules/user/user.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -15,10 +16,12 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
+import { MatTableModule } from '@angular/material/table';
 
 
 import { HttpClientModule } from '@angular/common/http';
 import { DataService } from 'src/app/modules/address/data.service';
+import { UserService } from 'src/app/modules/user/user.service';
 
 @NgModule({
   declarations: [
@@ -26,7 +29,8 @@ import { DataService } from 'src/app/modules/address/data.service';
     MainComponent,
     UserinfoComponent,
     CreateComponent,
-    AddressComponent
+    AddressComponent,
+    UserComponent
     
   ],
   imports: [
@@ -41,8 +45,9 @@ import { DataService } from 'src/app/modules/address/data.service';
     MatInputModule,
     MatSelectModule,
     MatButtonModule,
+    MatTableModule,
     HttpClientModule
 ],
-providers: [DataService],
+providers: [DataService, UserService],
 })
 export class DefaultModule { }
