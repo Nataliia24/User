@@ -9,6 +9,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { CreateComponent } from 'src/app/modules/create/create.component';
 import { AddressComponent } from 'src/app/modules/address/address.component';
 import { UserComponent } from 'src/app/modules/user/user.component';
+import { RegistrationComponent } from 'src/app/modules//registration/registration.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -20,8 +21,8 @@ import { MatTableModule } from '@angular/material/table';
 
 
 import { HttpClientModule } from '@angular/common/http';
-import { DataService } from 'src/app/modules/address/data.service';
-import { UserService } from 'src/app/modules/user/user.service';
+import { DataService } from 'src/app/services/data.service';
+import { UserService } from 'src/app/services/user.service';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { UserService } from 'src/app/modules/user/user.service';
     UserinfoComponent,
     CreateComponent,
     AddressComponent,
-    UserComponent
+    UserComponent,
+    RegistrationComponent
     
   ],
   imports: [

@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { Country } from './country.model';
-import { DataService } from './data.service';
+import { DataService } from '../../services/data.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { EventEmitter } from '@angular/core';
 
 interface Address {
   value: string;
@@ -16,8 +17,8 @@ interface Address {
 export class AddressComponent implements OnInit {
 
   addressForm: FormGroup;
-
   countries$: Country[];
+  @Output() submit: EventEmitter<any> = new EventEmitter();
 
   addresses: Address[] = [
     {value: 'home-0', viewValue: 'Home Address'},
@@ -40,5 +41,10 @@ export class AddressComponent implements OnInit {
       'code': new FormControl(null, [Validators.required, Validators.pattern("[0-9 ]{12}")])
     });
   }
+
+  onSubmit(): void {
+    
+    this.submit.emit(this.addressForm.value);
+}
 
 }
