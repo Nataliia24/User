@@ -1,4 +1,4 @@
 <div class="registration">
-    <app-create (onFormGroupCreate)="onFormGroupCreateEvent($event)"></app-create>
-    <app-address (onFormGroupAddress)="onFormGroupCreateAddress($event)"></app-address>
+    <app-create (sendUserMainInfo)="addUserMainInfo($event)"></app-create>
+    <app-address (sendAddessInfo)="addAddressInfo($event)"></app-address>
 </div>

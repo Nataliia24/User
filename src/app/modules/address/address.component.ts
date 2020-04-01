@@ -3,6 +3,7 @@ import { Country } from './country.model';
 import { DataService } from '../../services/data.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { EventEmitter } from '@angular/core';
+import { Users } from '../user/users';
 
 interface Address {
   value: string;
@@ -18,7 +19,7 @@ export class AddressComponent implements OnInit {
 
   addressForm: FormGroup;
   countries$: Country[];
-  @Output() submit: EventEmitter<any> = new EventEmitter();
+  @Output() sendAddessInfo: EventEmitter<Users> = new EventEmitter();
 
   addresses: Address[] = [
     {value: 'home-0', viewValue: 'Home Address'},
@@ -43,8 +44,7 @@ export class AddressComponent implements OnInit {
   }
 
   onSubmit(): void {
-    
-    this.submit.emit(this.addressForm.value);
+    this.sendAddessInfo.emit(this.addressForm.value);
 }
 
 }

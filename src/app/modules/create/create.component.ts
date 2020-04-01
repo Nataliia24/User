@@ -1,8 +1,6 @@
 import { Component, OnInit, Output } from '@angular/core';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { compareValidator } from 'src/app/compare/compare-validator.directive';
-import { HttpClient } from '@angular/common/http';
-import { UserService } from 'src/app/services/user.service';
 import { Users } from '../user/users';
 import { EventEmitter } from '@angular/core';
 
@@ -13,13 +11,12 @@ import { EventEmitter } from '@angular/core';
 })
 export class CreateComponent implements OnInit {
   signupForm: FormGroup;
-  users: Users[] = [];
+  condition: boolean = true;
+  
 
-  @Output() submit: EventEmitter<any> = new EventEmitter();
+  @Output() sendUserMainInfo: EventEmitter<Users> = new EventEmitter();
 
-
-
-  constructor(private http: HttpClient, public fb: FormBuilder, private userS: UserService) {}
+  constructor(private fb: FormBuilder) {}
 
   ngOnInit(): void {
     this.signupForm = this.fb.group({
@@ -31,17 +28,11 @@ export class CreateComponent implements OnInit {
       'password': this.fb.control(null, Validators.required),
       'confirmpassword': this.fb.control(null, [Validators.required, compareValidator('password')])
     });
-    
-
   }
 
-  onSubmit(): void {
-    const newUser: Users = {...this.signupForm.value};
-    this.userS.createUser(newUser).subscribe(
-    user => this.users.push(user)
-    );
-    
-    this.submit.emit(this.signupForm.value);
+  onNextClick(): void {
+    this.sendUserMainInfo.emit(this.signupForm.value);
+    this.condition == !this.condition;
 }
 }
 

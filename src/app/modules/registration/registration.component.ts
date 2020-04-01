@@ -1,25 +1,25 @@
-import { Component, OnInit} from '@angular/core';
+import { Component} from '@angular/core';
+import { Users } from '../user/users';
+import { UserService } from 'src/app/services/user.service';
+
 
 @Component({
   selector: 'app-registration',
   templateUrl: './registration.component.html',
   styleUrls: ['./registration.component.css']
 })
-export class RegistrationComponent implements OnInit {
-  formCheck :any  = '';
-  public onFormGroupCreateEvent(event) {
-    this.formCheck = event;
-    console.error(event, this.formCheck['controls'])
-  }
+export class RegistrationComponent {
+  users: Users[] = [];
+  
 
-  public onFormGroupCreateAddress(event) {
-    this.formCheck = event;
-    console.error(event, this.formCheck['controls'])
-  }
+  constructor(private userS: UserService) {}
 
-  constructor() { }
-
-  ngOnInit(): void {
-    
+  addUserMainInfo(event: Users) {
+  
 }
+
+addAddressInfo(event: Users) {
+
+}
+
 }
