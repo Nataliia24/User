@@ -11,7 +11,6 @@ import { EventEmitter } from '@angular/core';
 })
 export class CreateComponent implements OnInit {
   signupForm: FormGroup;
-  condition: boolean = true;
   
 
   @Output() sendUserMainInfo: EventEmitter<User> = new EventEmitter();
