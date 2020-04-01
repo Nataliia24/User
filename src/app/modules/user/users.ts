@@ -1,4 +1,4 @@
-export interface Users {
+export interface User {
     id: string;
     firstName: string;
     lastName: string;
@@ -6,6 +6,7 @@ export interface Users {
     phone: string;
     email: string;
     password: string;
+    address: string;
 
     //constructor(id, firstName, lastName, userName, phone, email, password)
    // {

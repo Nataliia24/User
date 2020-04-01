@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Users } from '../modules/user/users';
+import { User } from '../modules/user/users';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -21,10 +21,10 @@ export class UserService {
 
   getUsers()
   {
-    return this.http.get<Users[]>(this.url);
+    return this.http.get<User[]>(this.url);
   }
 
- createUser(user: Users): Observable<Users> {
-   return this.http.post<Users>(this.url, JSON.stringify(user), httpOptions);
+ createUser(user: User): Observable<User[]> {
+   return this.http.post<User[]>(this.url, JSON.stringify(user), httpOptions);
  }
 }

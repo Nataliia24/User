@@ -1,7 +1,7 @@
 import { Component, OnInit, Output } from '@angular/core';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { compareValidator } from 'src/app/compare/compare-validator.directive';
-import { Users } from '../user/users';
+import { User } from '../user/users';
 import { EventEmitter } from '@angular/core';
 
 @Component({
@@ -14,7 +14,7 @@ export class CreateComponent implements OnInit {
   condition: boolean = true;
   
 
-  @Output() sendUserMainInfo: EventEmitter<Users> = new EventEmitter();
+  @Output() sendUserMainInfo: EventEmitter<User> = new EventEmitter();
 
   constructor(private fb: FormBuilder) {}
 
@@ -32,7 +32,7 @@ export class CreateComponent implements OnInit {
 
   onNextClick(): void {
     this.sendUserMainInfo.emit(this.signupForm.value);
-    this.condition == !this.condition;
+    
 }
 }
 

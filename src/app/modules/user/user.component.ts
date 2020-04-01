@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../services/user.service';
-import { Users } from './users';
+import { User } from './users';
 
 @Component({
   selector: 'app-user',
@@ -12,8 +12,8 @@ export class UserComponent implements OnInit {
   constructor(private ur: UserService) { }
 
   columns = ["User id", "First Name", "Last name", "User name", "Phone", "Email", "Address", ];
-  index = ["id", "firstName", "lastName", "userName", "phone", "email"];
-  users: Users[] = [];
+  index = ["id", "firstName", "lastName", "userName", "phone", "email", "address"];
+  users: User[] = [];
 
   ngOnInit(): void {
     this.ur.getUsers().subscribe
