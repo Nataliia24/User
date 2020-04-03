@@ -1,7 +1,7 @@
 import { Component, OnInit, Output } from '@angular/core';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { compareValidator } from 'src/app/compare/compare-validator.directive';
-import { User } from '../user/users';
+import { User } from '../models/users';
 import { EventEmitter } from '@angular/core';
 
 @Component({

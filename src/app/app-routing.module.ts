@@ -4,7 +4,7 @@ import { DefaultComponent } from './layouts/default/default.component';
 import { MainComponent } from './modules/main/main.component';
 import { UserinfoComponent } from './modules/userinfo/userinfo.component';
 
-import { UserComponent } from './modules/user/user.component';
+
 import { RegistrationComponent } from './modules/registration/registration.component';
 
 
@@ -31,7 +31,7 @@ const routes: Routes = [{
  //},
   {
     path: 'user',
-    component: UserComponent
+    component: UserinfoComponent
   }]
 }];
 

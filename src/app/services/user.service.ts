@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { User } from '../modules/user/users';
+import { User } from '../modules/models/users';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -19,7 +19,7 @@ export class UserService {
 
   url: string = "http://localhost:3000/Users/";
 
-  getUsers()
+  getUsers():Observable<User[]>
   {
     return this.http.get<User[]>(this.url);
   }

@@ -1,1 +1,65 @@
-<p>userinfo works!</p>
+<h1>User info table</h1>
+<hr>
+
+<table *ngIf="users" class="table">
+    <thead>
+        <tr>
+            <th>First name</th>
+            <th>Last name</th>
+            <th>User name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Action</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody *ngFor="let user of users" [attr.user]="user">
+        <tr>
+            <td>{{user.firstName}}</td>
+            <td>{{user.lastName}}</td>
+            <td>{{user.userName}}</td>
+            <td>{{user.email}}</td>
+            <td>{{user.phone}}</td>
+            <td>
+                <button type="button" class="btn btn-info" (click)="openAddresses(user)">
+                    Get address info
+                </button>
+            </td>
+            <td>
+                <button type="button" class="btn btn-danger" (click)="deleteUser(user)">
+                    Delete
+                </button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<div *ngIf="showAddr">
+    <h1>Addresses table</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Address type</th>
+                <th>Address</th>
+                <th>City</th>
+                <th>Country</th>
+                <th>Postal code</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let address of addresses">
+                <td>{{address.type}}</td>
+                <td>{{address.address}}</td>
+                <td>{{address.city}}</td>
+                <td>{{address.country}}</td>
+                <td>{{address.code}}</td>
+                <td>
+                    <button type="button" class="btn btn-info" (click)="closeAddresses()">
+                        Close
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

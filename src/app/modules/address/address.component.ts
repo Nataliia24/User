@@ -1,10 +1,11 @@
 import { Component, OnInit, Output } from '@angular/core';
 import { Country } from './country.model';
 import { DataService } from '../../services/data.service';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, Validators, FormArray, FormBuilder } from '@angular/forms';
 import { EventEmitter } from '@angular/core';
-import { User } from '../user/users';
+import { User } from '../models/users';
 import { PageContent } from '../registration/registration.component';
+
 
 interface Address {
   value: string;
@@ -17,7 +18,7 @@ interface Address {
   styleUrls: ['./address.component.css']
 })
 export class AddressComponent implements OnInit {
-
+  
   addressForm: FormGroup;
   countries$: Country[];
  
@@ -31,27 +32,51 @@ export class AddressComponent implements OnInit {
   ];
 
 
-  constructor(private dataService: DataService) { }
+  constructor(private dataService: DataService, private fb: FormBuilder) { }
 
   ngOnInit(): void {
     this.dataService.getCountries()
     .subscribe(data => this.countries$ = data);
 
-    this.addressForm = new FormGroup({
-      'type': new FormControl(null, [Validators.required]),
-      'address': new FormControl(null, [Validators.required]),
-      'city': new FormControl(null, [Validators.required]),
-      'country': new FormControl(null, [Validators.required]),
-      'code': new FormControl(null, [Validators.required, Validators.pattern("[0-9 ]{12}")])
+    this.addressForm = this.fb.group({
+      'type': this.fb.control(null, [Validators.required]),
+      'address': this.fb.control(null, [Validators.required]),
+      'city': this.fb.control(null, [Validators.required]),
+      'country': this.fb.control(null, [Validators.required]),
+      'code': this.fb.control(null, [Validators.required, Validators.pattern("[0-9 ]{12}")]),
+      'additionalAddress': this.fb.array([this.getaddresses()])
     });
   }
 
-  onSubmit(): void {
+onSubmit(): void {
     this.sendAddessInfo.emit(this.addressForm.value);
+    alert("User created sucessfully!")
 }
 
 onPriviousClick() {
 this.backToPreviousPage.emit(PageContent.USER_FORM);
+}
+
+get addressArray() {
+  return <FormArray>this.addressForm.get('additionalAddress')
+}
+
+addAddress() {
+  this.addressArray.push(this.getaddresses())
+}
+
+deletAddress(i){
+  this.addressArray.removeAt(i)
+}
+
+getaddresses() {
+  return this.fb.group({
+    'type': this.fb.control(null, [Validators.required]),
+      'address': this.fb.control(null, [Validators.required]),
+      'city': this.fb.control(null, [Validators.required]),
+      'country': this.fb.control(null, [Validators.required]),
+      'code': this.fb.control(null, [Validators.required, Validators.pattern("[0-9 ]{12}")])
+  })
 }
 
 }
