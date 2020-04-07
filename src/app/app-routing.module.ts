@@ -6,6 +6,8 @@ import { UserinfoComponent } from './modules/userinfo/userinfo.component';
 
 
 import { RegistrationComponent } from './modules/registration/registration.component';
+import { UpdateUserComponent } from './modules/update-user/update-user.component';
+import { UpdateAddressComponent } from './modules/update-address/update-address.component';
 
 
 const routes: Routes = [{
@@ -32,6 +34,14 @@ const routes: Routes = [{
   {
     path: 'user',
     component: UserinfoComponent
+  },
+  {
+    path: 'update-user/:id',
+    component: UpdateUserComponent
+  },
+  {
+    path: 'update-address',
+    component: UpdateAddressComponent
   }]
 }];
 

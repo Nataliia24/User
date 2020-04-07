@@ -1,10 +1,10 @@
 import { Component, OnInit, Output } from '@angular/core';
-import { Country } from './country.model';
 import { DataService } from '../../services/data.service';
 import { FormGroup, Validators, FormArray, FormBuilder } from '@angular/forms';
 import { EventEmitter } from '@angular/core';
 import { User } from '../models/users';
 import { PageContent } from '../registration/registration.component';
+import { Country } from '../models/country.model';
 
 
 interface Address {
@@ -39,12 +39,7 @@ export class AddressComponent implements OnInit {
     .subscribe(data => this.countries$ = data);
 
     this.addressForm = this.fb.group({
-      'type': this.fb.control(null, [Validators.required]),
-      'address': this.fb.control(null, [Validators.required]),
-      'city': this.fb.control(null, [Validators.required]),
-      'country': this.fb.control(null, [Validators.required]),
-      'code': this.fb.control(null, [Validators.required, Validators.pattern("[0-9 ]{12}")]),
-      'additionalAddress': this.fb.array([this.getaddresses()])
+      "userAddresses": this.fb.array([this.getaddresses()])
     });
   }
 
@@ -58,15 +53,15 @@ this.backToPreviousPage.emit(PageContent.USER_FORM);
 }
 
 get addressArray() {
-  return <FormArray>this.addressForm.get('additionalAddress')
+  return <FormArray>this.addressForm.get('userAddresses');
 }
 
 addAddress() {
-  this.addressArray.push(this.getaddresses())
+  this.addressArray.push(this.getaddresses());
 }
 
 deletAddress(i){
-  this.addressArray.removeAt(i)
+  this.addressArray.removeAt(i);
 }
 
 getaddresses() {
@@ -75,7 +70,7 @@ getaddresses() {
       'address': this.fb.control(null, [Validators.required]),
       'city': this.fb.control(null, [Validators.required]),
       'country': this.fb.control(null, [Validators.required]),
-      'code': this.fb.control(null, [Validators.required, Validators.pattern("[0-9 ]{12}")])
+      'code': this.fb.control(null, [Validators.required, Validators.pattern("[0-9 ]{5}")])
   })
 }
 

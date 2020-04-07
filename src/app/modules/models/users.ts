@@ -1,12 +1,14 @@
 export interface User {
-    id: string;
+    status: number;
+    message(message: any);
+    id: number;
     firstName: string;
     lastName: string;
     userName: string;
     phone: string;
     email: string;
     password: string;
-    address: Address[];
+    userAddresses: Address[];
 }
 
 export interface Address {

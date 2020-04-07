@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from "@angular/router";
 import { UserService } from '../../services/user.service';
 import { User, Address} from '../models/users';
 
@@ -9,12 +10,11 @@ import { User, Address} from '../models/users';
 })
 export class UserinfoComponent implements OnInit {
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService, private router: Router) { }
 
-  columns = ["User id", "First Name", "Last name", "User name", "Phone", "Email", "Address"];
-  index = ["id", "firstName", "lastName", "userName", "phone", "email", "address"];
+  
   users: User[] = [];
-  addresses: any[]= [];
+  userAddresses: Address[]= [];
   showAddr = false;
 
   ngOnInit(): void {
@@ -25,17 +25,21 @@ export class UserinfoComponent implements OnInit {
 
   openAddresses(user) { 
     this.showAddr = true;
-    this.addresses = this.users.find(elem => elem.userName === user.userName).address;
+    this.userAddresses = this.users.find(elem => elem.userName === user.userName).userAddresses;
   }
 
-  deleteUser(user) {
-    for(let i = 0; i < this.users.length; ++i){
-      if (this.users[i] === user) {
-          this.users.splice(i,1);
-      }
+  deleteUser(user: User) {
+      this.userService.deleteUser(user.id).subscribe(() => {
+        this.users = this.users.filter(u => u !== user);
+    });
     }
-  }
 
+  updateUser(user: User) {
+    window.localStorage.removeItem("editUserId");
+    window.localStorage.setItem("editUserId", user.id.toString());
+    this.router.navigate(['update-user']);
+    }
+    
   closeAddresses() {
     this.showAddr = false;
   }

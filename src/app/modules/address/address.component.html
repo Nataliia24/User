@@ -3,7 +3,7 @@
         <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
             <h2>Create user</h2>
             <form [formGroup]="addressForm" (ngSubmit)="onSubmit()">
-                <div id="address-data" formArrayName="additionalAddress">
+                <div id="address-data" formArrayName="userAddresses">
                     <div *ngFor="let item of addressArray.controls; let i = index" [formGroupName]="i">
                         <h3>Address info</h3>
                         <div class="form-group">
@@ -14,7 +14,7 @@
                                         {{address.viewValue}}
                                     </mat-option>
                                 </mat-select>
-                                <mat-error *ngIf="!addressForm.get('type').valid && addressForm.get('type').touched">Please, select address type</mat-error>
+                                <mat-error *ngIf="addressArray.get('type') && !addressArray.get('type').valid && addressArray.get('type').touched">Please, select address type</mat-error>
                             </mat-form-field>
                         </div>
 
@@ -22,7 +22,7 @@
                             <mat-form-field class="example-full-width" hideRequiredMarker>
                                 <mat-label>Address</mat-label>
                                 <input matInput placeholder="Address" formControlName="address" required>
-                                <mat-error *ngIf="!addressForm.get('address').valid && addressForm.get('address').touched">Enter valid address</mat-error>
+                                <mat-error *ngIf="addressArray.get('address') && !addressArray.get('address').valid && addressArray.get('address').touched">Enter valid address</mat-error>
                             </mat-form-field>
                         </div>
 
@@ -30,7 +30,7 @@
                             <mat-form-field>
                                 <mat-label>City</mat-label>
                                 <input matInput placeholder="City" formControlName="city" required>
-                                <mat-error *ngIf="!addressForm.get('city').valid && addressForm.get('city').touched">Please, enter your city</mat-error>
+                                <mat-error *ngIf="addressArray.get('city') && !addressArray.get('city').valid && addressArray.get('city').touched">Please, enter your city</mat-error>
                             </mat-form-field>
                             <mat-form-field>
                                 <mat-label>Country</mat-label>
@@ -39,7 +39,7 @@
                                         {{country.name}}
                                     </mat-option>
                                 </mat-select>
-                                <mat-error *ngIf="!addressForm.get('country').valid && addressForm.get('country').touched">Please, select your country</mat-error>
+                                <mat-error *ngIf="addressArray.get('country') && !addressArray.get('country').valid && addressArray.get('country').touched">Please, select your country</mat-error>
                             </mat-form-field>
                         </div>
 
@@ -48,7 +48,7 @@
                                 <mat-label>Portal code</mat-label>
                                 <input matInput placeholder="Portal" type="number" formControlName="code" minLength="5" maxLength="7">
                                 <mat-hint align="start">Enter only numbers</mat-hint>
-                                <mat-error *ngIf="!addressForm.get('code').valid && addressForm.get('code').touched">Please, enter portal code</mat-error>
+                                <mat-error *ngIf="addressArray.get('code') && !addressArray.get('code').valid && addressArray.get('code').touched">Please, enter portal code</mat-error>
                             </mat-form-field>
                         </div>
                         <button mat-raised-button class="float-right" (click)="deletAddress(i)">Delete</button>
@@ -56,7 +56,7 @@
 
                     <div class="example-button-row">
                         <button mat-raised-button (click)="onPriviousClick()">Privious</button>
-                        <button mat-raised-button routerLink="/user" (click)="onSubmit()" type="submit">Next</button>
+                        <button mat-raised-button routerLink="/user" (click)="onSubmit()" [disabled]="!addressForm.valid" type="submit">Next</button>
                         <button mat-raised-button class="float-right" type="button" (click)="addAddress()">Add</button>
                     </div>
                 </div>

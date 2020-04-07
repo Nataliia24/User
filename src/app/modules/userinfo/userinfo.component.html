@@ -11,9 +11,10 @@
             <th>Phone</th>
             <th>Action</th>
             <th></th>
+            <th></th>
         </tr>
     </thead>
-    <tbody *ngFor="let user of users" [attr.user]="user">
+    <tbody *ngFor="let user of users">
         <tr>
             <td>{{user.firstName}}</td>
             <td>{{user.lastName}}</td>
@@ -28,6 +29,11 @@
             <td>
                 <button type="button" class="btn btn-danger" (click)="deleteUser(user)">
                     Delete
+                </button>
+            </td>
+            <td>
+                <button type="button" class="btn btn-danger" (click)="updateUser(user.id)">
+                    Update
                 </button>
             </td>
         </tr>
@@ -48,7 +54,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let address of addresses">
+            <tr *ngFor="let address of userAddresses">
                 <td>{{address.type}}</td>
                 <td>{{address.address}}</td>
                 <td>{{address.city}}</td>

@@ -1,0 +1,12 @@
+.ng-valid[required],
+.ng-valid.required {
+    border: 1px solid green;
+}
+
+input.ng-invalid.ng-touched {
+    border: 1px solid red;
+}
+
+span {
+    color: red;
+}

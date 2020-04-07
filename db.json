@@ -1,131 +1,61 @@
 {
   "Users": [
     {
-      "id": 1,
       "firstName": "Nataliia",
       "lastName": "Oprysko",
-      "userName": "Nat",
-      "phone": "380674521269",
-      "email": "oprusko@gmail.com",
-      "address": [
+      "userName": "Natalia",
+      "phone": "380935221428",
+      "email": "opruskon24@gmail.com",
+      "password": "123456",
+      "confirmpassword": "123456",
+      "userAddresses": [
         {
           "type": "billiding-1",
-          "address": "bfbbf",
-          "city": "bfbfbf",
-          "country": "Afghanistan",
-          "code": null
-        }
-      ]
-    },
-    {
-      "id": 2,
-      "firstName": "Olena",
-      "lastName": "Salamaha",
-      "userName": "Olena_S",
-      "phone": "380931256874",
-      "email": "olena@gmail.com"
-    },
-    {
-      "id": 3,
-      "firstName": "Iryna",
-      "lastName": "Dolynska",
-      "userName": "Ira",
-      "phone": "380503216987",
-      "email": "iryna_d@gmail.com"
-    },
-    {
-      "firstName": null,
-      "lastName": null,
-      "userName": null,
-      "phone": null,
-      "email": null,
-      "password": null,
-      "confirmpassword": null,
-      "id": 4
-    },
-    {
-      "firstName": "knlkn",
-      "lastName": null,
-      "userName": null,
-      "phone": null,
-      "email": null,
-      "password": null,
-      "confirmpassword": null,
-      "address": [
-        {
-          "type": null,
-          "address": null,
-          "city": null,
-          "country": null,
-          "code": null,
-          "additionalAddress": [
-            {
-              "type": "billiding-1",
-              "address": null,
-              "city": null,
-              "country": null,
-              "code": null
-            }
-          ]
+          "address": "cx cx ",
+          "city": "xc cx",
+          "country": "Barbados",
+          "code": 12345
         }
       ],
-      "id": 5
+      "id": 1
     },
     {
-      "firstName": "bfb",
-      "lastName": "bfbd",
-      "userName": null,
-      "phone": null,
-      "email": null,
-      "password": null,
-      "confirmpassword": null,
-      "address": [
+      "firstName": "dsvsd",
+      "lastName": "dbdfb",
+      "userName": "fdbdd",
+      "phone": "380935221428",
+      "email": "oprusko@gmail.com",
+      "password": "123456",
+      "confirmpassword": "123456",
+      "userAddresses": [
         {
-          "type": null,
-          "address": null,
-          "city": null,
-          "country": null,
-          "code": null,
-          "additionalAddress": [
-            {
-              "type": "billiding-1",
-              "address": "fd d ",
-              "city": null,
-              "country": "Åland Islands",
-              "code": null
-            }
-          ]
+          "type": "billiding-1",
+          "address": "dvx",
+          "city": "xv cx",
+          "country": "Albania",
+          "code": 25634
         }
       ],
-      "id": 6
+      "id": 2
     },
     {
-      "firstName": null,
-      "lastName": null,
-      "userName": null,
-      "phone": null,
-      "email": null,
-      "password": null,
-      "confirmpassword": null,
-      "address": [
+      "firstName": "c c",
+      "lastName": "cc vc  c",
+      "userName": " vc ",
+      "phone": "380935221428",
+      "email": "opruskon24@gmail.com",
+      "password": "123456",
+      "confirmpassword": "123456",
+      "userAddresses": [
         {
-          "type": null,
-          "address": null,
-          "city": null,
-          "country": null,
-          "code": null,
-          "additionalAddress": [
-            {
-              "type": null,
-              "address": null,
-              "city": null,
-              "country": null,
-              "code": null
-            }
-          ]
+          "type": "shipment-2",
+          "address": "c c",
+          "city": "c  v",
+          "country": "Åland Islands",
+          "code": 12345
         }
       ],
-      "id": 7
+      "id": 3
     }
   ]
 }
