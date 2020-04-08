@@ -7,7 +7,7 @@
                 <div id="user-data">
                     <div class="form-group">
                         <label for="firstName">First Name:</label>
-                        <input type="text" id="firstName" formControlName="'firstName'" class="form-control" required>
+                        <input type="text" id="firstName" formControlName='firstName' class="form-control" required>
                         <span *ngIf="!updateForm.get('firstName').valid && (updateForm.get('firstName').touched || updateForm.get('firstName').dirty)"> 
                                 Please enter a valid first name
                             </span>

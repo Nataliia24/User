@@ -34,10 +34,10 @@ export class UserinfoComponent implements OnInit {
     });
     }
 
-  updateUser(user: User) {
+  updateUser(userId: number) {
     window.localStorage.removeItem("editUserId");
-    window.localStorage.setItem("editUserId", user.id.toString());
-    this.router.navigate(['update-user']);
+    window.localStorage.setItem("editUserId", userId.toString());
+    this.router.navigate([`update-user/${userId}`]);
     }
     
   closeAddresses() {

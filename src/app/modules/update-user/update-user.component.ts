@@ -43,6 +43,9 @@ export class UpdateUserComponent implements OnInit {
     this.userService.getUsersById(+userId).subscribe(
       data => {
         this.updateForm.setValue(data);
+      },
+      (err) => {
+        console.log(err);
       }
     )
   }
