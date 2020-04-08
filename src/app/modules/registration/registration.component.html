@@ -2,5 +2,4 @@
     <app-create (sendUserMainInfo)="addUserMainInfo($event)" *ngIf="pageContent==='USER_FORM'">
     </app-create>
     <app-address (sendAddessInfo)="addAddressInfo($event)" (backToPreviousPage)="setPageContent($event)" *ngIf="pageContent==='ADDRESS_FORM'"></app-address>
-
 </div>

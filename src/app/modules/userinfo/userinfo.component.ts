@@ -10,7 +10,7 @@ import { User, Address} from '../models/users';
 })
 export class UserinfoComponent implements OnInit {
 
-  constructor(private userService: UserService, private _router: Router) { }
+  constructor(private userService: UserService, private router: Router) { }
 
   
   users: User[] = [];
@@ -29,14 +29,16 @@ export class UserinfoComponent implements OnInit {
   }
 
   deleteUser(user: User) {
-    this.userService.deleteUser(user.id).subscribe(() => {
-      this.users = this.users.filter(u => u !== user);
-  });
-  }
+      this.userService.deleteUser(user.id).subscribe(() => {
+        this.users = this.users.filter(u => u !== user);
+    });
+    }
 
-  updateUser(userId: number) {
-    this._router.navigate(['/update-user', userId])
-  }
+  updateUser(user: User) {
+    window.localStorage.removeItem("editUserId");
+    window.localStorage.setItem("editUserId", user.id.toString());
+    this.router.navigate(['update-user']);
+    }
     
   closeAddresses() {
     this.showAddr = false;

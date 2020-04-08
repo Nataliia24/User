@@ -1,4 +1,6 @@
 export interface User {
+    status: number;
+    message(message: any);
     id: number;
     firstName: string;
     lastName: string;

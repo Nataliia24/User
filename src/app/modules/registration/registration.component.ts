@@ -1,7 +1,7 @@
 import { Component} from '@angular/core';
 import { User, Address } from '../models/users';
 import { UserService } from 'src/app/services/user.service';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
 
 export enum PageContent {
 USER_FORM="USER_FORM",
@@ -20,24 +20,7 @@ export class RegistrationComponent {
   userForm: FormGroup;
  
 
-  constructor(private userS: UserService, private fb: FormBuilder) {}
-
-  ngOnInit() {
-    this.userForm = this.fb.group({
-      firstName: null,
-      lastName: null,
-      userName: null,
-      phone: null,
-      email: null,
-      password: null,
-      type: null,
-      city: null,
-      country: null,
-      street: null,
-      code: null,
-      additionalAddress: null,
-    });
-  }
+  constructor(private userS: UserService) {}
 
   addUserMainInfo(event: User) {
     this.userMainInfo = event;
