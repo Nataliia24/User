@@ -31,6 +31,31 @@ export class CreateComponent implements OnInit {
       'password': this.fb.control(null, [Validators.required, Validators.minLength(6)]),
       'confirmpassword': this.fb.control(null, [Validators.required, compareValidator('password')])
     });
+
+    this.route.paramMap.subscribe(params => {
+      const userId = +params.get('id');
+      if (userId){
+        this.getUser(userId);
+      }
+    });
+  }
+
+  getUser(id: number) {
+    this.userService.getUsersById(id).subscribe(
+      (user: User) => this.updateUser(user)
+    );
+  }
+
+  updateUser(user: User) {
+    this.signupForm.patchValue({
+      'firstName': this.fb.control(null, Validators.required),
+      'lastName': this.fb.control(null, Validators.required),
+      'userName': this.fb.control(null, Validators.required),
+      'phone': this.fb.control(null, [Validators.required, Validators.pattern("[0-9 ]{12}")]),
+      'email': this.fb.control(null, [Validators.required, Validators.email]),
+      'password': this.fb.control(null, [Validators.required, Validators.minLength(6)]),
+      'confirmpassword': this.fb.control(null, [Validators.required, compareValidator('password')])
+    })
   }
 
   onNextClick(): void {
