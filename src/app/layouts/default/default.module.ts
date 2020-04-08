@@ -22,8 +22,6 @@ import { MatTableModule } from '@angular/material/table';
 import { HttpClientModule } from '@angular/common/http';
 import { DataService } from 'src/app/services/data.service';
 import { UserService } from 'src/app/services/user.service';
-import { UpdateUserComponent } from 'src/app/modules/update-user/update-user.component';
-import { UpdateAddressComponent } from 'src/app/modules/update-address/update-address.component';
 
 @NgModule({
   declarations: [
@@ -32,9 +30,7 @@ import { UpdateAddressComponent } from 'src/app/modules/update-address/update-ad
     UserinfoComponent,
     CreateComponent,
     AddressComponent,
-    RegistrationComponent,
-    UpdateUserComponent,
-    UpdateAddressComponent
+    RegistrationComponent
     
   ],
   imports: [
