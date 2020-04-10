@@ -3,56 +3,56 @@
     {
       "firstName": "Nataliia",
       "lastName": "Oprysko",
-      "userName": "Natalia",
-      "phone": "380935221428",
+      "userName": "Nataliia",
+      "phone": "380635621245",
       "email": "opruskon24@gmail.com",
-      "password": "123456",
-      "confirmpassword": "123456",
+      "password": "nat2499",
+      "confirmpassword": "nat2499",
       "userAddresses": [
         {
-          "type": "billiding-1",
-          "address": "cx cx ",
-          "city": "xc cx",
-          "country": "Barbados",
-          "code": 12345
+          "type": "home-0",
+          "address": "street Bilasa and Danylyshyn",
+          "city": "Mykolaiv",
+          "country": "Ukraine",
+          "code": 81634
         }
       ],
       "id": 1
     },
     {
-      "firstName": "dsvsd",
-      "lastName": "dbdfb",
-      "userName": "fdbdd",
-      "phone": "380935221428",
-      "email": "oprusko@gmail.com",
-      "password": "123456",
-      "confirmpassword": "123456",
+      "firstName": "Nadiya",
+      "lastName": "Oprysko",
+      "userName": "Nadiya",
+      "phone": "380674005896",
+      "email": "nadiya@gmail.com",
+      "password": "oprysko302001",
+      "confirmpassword": "oprysko302001",
       "userAddresses": [
         {
           "type": "billiding-1",
-          "address": "dvx",
-          "city": "xv cx",
-          "country": "Albania",
-          "code": 25634
+          "address": "street Bilas and Danylyshyn",
+          "city": "Mykolaiv",
+          "country": "Ukraine",
+          "code": 81634
         }
       ],
       "id": 2
     },
     {
-      "firstName": "c c",
-      "lastName": "cc vc  c",
-      "userName": " vc ",
-      "phone": "380935221428",
-      "email": "opruskon24@gmail.com",
-      "password": "123456",
-      "confirmpassword": "123456",
+      "firstName": "Olena",
+      "lastName": "Salamakha",
+      "userName": "Olena",
+      "phone": "380504569874",
+      "email": "olena.salamakha@gmail.com",
+      "password": "olena19",
+      "confirmpassword": "olena19",
       "userAddresses": [
         {
-          "type": "shipment-2",
-          "address": "c c",
-          "city": "c  v",
-          "country": "Åland Islands",
-          "code": 12345
+          "type": "billiding-1",
+          "address": "street Shevchenka",
+          "city": "Lviv",
+          "country": "Ukraine",
+          "code": 79007
         }
       ],
       "id": 3

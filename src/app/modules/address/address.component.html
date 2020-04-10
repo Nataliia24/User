@@ -55,8 +55,8 @@
                     </div>
 
                     <div class="example-button-row">
-                        <button mat-raised-button (click)="onPriviousClick()">Privious</button>
-                        <button mat-raised-button routerLink="/user" (click)="onSubmit()" [disabled]="!addressForm.valid" type="submit">Next</button>
+                        <button mat-raised-button (click)="goToPrevious.emit()">Previous</button>
+                        <button mat-raised-button (click)="onSubmit()" [disabled]="!addressForm.valid" type="submit">Next</button>
                         <button mat-raised-button class="float-right" type="button" (click)="addAddress()">Add</button>
                     </div>
                 </div>

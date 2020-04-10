@@ -10,12 +10,16 @@ import { User, Address} from '../models/users';
 })
 export class UserinfoComponent implements OnInit {
 
-  constructor(private userService: UserService, private _router: Router) { }
+  constructor(private userService: UserService, private router: Router) { }
 
-  
   users: User[] = [];
   userAddresses: Address[]= [];
   showAddr = false;
+  firstNameSearch: string;
+  lastNameSearch: string;
+  userNameSearch: string;
+  userEmailSearch: string;
+  userPhoneSearch: string;
 
   ngOnInit(): void {
     this.userService.getUsers().subscribe(response => {
@@ -35,7 +39,7 @@ export class UserinfoComponent implements OnInit {
   }
 
   updateUser(userId: number) {
-    this._router.navigate(['/update-user', userId])
+    this.router.navigate([`/updateuser/${userId}`])
   }
     
   closeAddresses() {

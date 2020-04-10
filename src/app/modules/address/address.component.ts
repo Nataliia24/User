@@ -2,8 +2,6 @@ import { Component, OnInit, Output } from '@angular/core';
 import { DataService } from '../../services/data.service';
 import { FormGroup, Validators, FormArray, FormBuilder } from '@angular/forms';
 import { EventEmitter } from '@angular/core';
-import { User } from '../models/users';
-import { PageContent } from '../registration/registration.component';
 import { Country } from '../models/country.model';
 
 
@@ -22,8 +20,8 @@ export class AddressComponent implements OnInit {
   addressForm: FormGroup;
   countries$: Country[];
  
-  @Output() sendAddessInfo: EventEmitter<User> = new EventEmitter();
-  @Output() backToPreviousPage: EventEmitter<PageContent> = new EventEmitter();
+  @Output() sendAddessInfo: EventEmitter<Address> = new EventEmitter();
+  @Output() goToPrevious: EventEmitter<void> = new EventEmitter();
 
   addresses: Address[] = [
     {value: 'home-0', viewValue: 'Home Address'},
@@ -45,12 +43,9 @@ export class AddressComponent implements OnInit {
 
 onSubmit(): void {
     this.sendAddessInfo.emit(this.addressForm.value);
-    alert("User created sucessfully!")
 }
 
-onPriviousClick() {
-this.backToPreviousPage.emit(PageContent.USER_FORM);
-}
+
 
 get addressArray() {
   return <FormArray>this.addressForm.get('userAddresses');

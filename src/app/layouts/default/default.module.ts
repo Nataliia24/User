@@ -17,11 +17,15 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTableModule } from '@angular/material/table';
+import { MatStepperModule } from '@angular/material/stepper';
+import { ConfirmationPopoverModule } from 'angular-confirmation-popover';
 
 
 import { HttpClientModule } from '@angular/common/http';
 import { DataService } from 'src/app/services/data.service';
 import { UserService } from 'src/app/services/user.service';
+import { UpdateUserComponent } from 'src/app/modules/update-user/update-user.component';
+import { UserFilterPipe } from 'src/app/modules/userinfo/user-filter.pipe';
 
 @NgModule({
   declarations: [
@@ -30,7 +34,9 @@ import { UserService } from 'src/app/services/user.service';
     UserinfoComponent,
     CreateComponent,
     AddressComponent,
-    RegistrationComponent
+    RegistrationComponent,
+    UpdateUserComponent,
+    UserFilterPipe
     
   ],
   imports: [
@@ -46,7 +52,11 @@ import { UserService } from 'src/app/services/user.service';
     MatSelectModule,
     MatButtonModule,
     MatTableModule,
-    HttpClientModule
+    MatStepperModule,
+    HttpClientModule,
+    ConfirmationPopoverModule.forRoot({
+      confirmButtonType: 'danger' // set defaults here
+    })
 ],
 providers: [DataService, UserService],
 })

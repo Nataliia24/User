@@ -7,6 +7,7 @@ import { UserinfoComponent } from './modules/userinfo/userinfo.component';
 
 import { RegistrationComponent } from './modules/registration/registration.component';
 import { CreateComponent } from './modules/create/create.component';
+import { UpdateUserComponent } from './modules/update-user/update-user.component';
 
 
 const routes: Routes = [{
@@ -16,7 +17,7 @@ const routes: Routes = [{
     path: '',
     component: MainComponent
   }, {
-    path: 'userinfo',
+    path: 'user-info',
     component: UserinfoComponent
   }, {
     path: 'create',
@@ -35,8 +36,8 @@ const routes: Routes = [{
     component: UserinfoComponent
   },
   {
-    path: 'update-user/:id',
-    component: CreateComponent
+    path: 'updateuser/:id',
+    component: UpdateUserComponent
   }]
 }];
 

@@ -17,7 +17,7 @@ export class UserService {
   constructor(private http: HttpClient) { }
   
 
-  url: string = "http://localhost:3000/Users/";
+  url: string = "http://localhost:3000/Users";
 
   getUsers():Observable<User[]>
   {
@@ -25,7 +25,7 @@ export class UserService {
   }
 
   getUsersById(id: number): Observable<User> {
-    return this.http.get<User>(this.url + id);
+    return this.http.get<User>(`${this.url}/${id}`);
   }
 
  createUser(user: User): Observable<User[]> {
@@ -36,7 +36,7 @@ export class UserService {
   return this.http.delete(`${this.url}/${id}`, httpOptions);
  }
 
- updateUser(user: User): Observable<User> {
-  return this.http.put<User>(this.url + user.id, user);
+ updateUser(user: User, id: number): Observable<User> {
+  return this.http.put<User>(`${this.url}/${id}`, user);
  }
 }
