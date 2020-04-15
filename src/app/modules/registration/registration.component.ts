@@ -1,8 +1,9 @@
 import { Component, ViewChild} from '@angular/core';
-import { User, Address } from '../models/users';
+import { User, Address } from '../../models/users';
 import { UserService } from 'src/app/services/user.service';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
 import { MatStepper } from '@angular/material/stepper';
+import { take } from 'rxjs/operators';
 
 @Component({
   selector: 'app-registration',
@@ -16,14 +17,12 @@ export class RegistrationComponent {
   userForm: FormGroup;
  @ViewChild(MatStepper) stepper: MatStepper;
 
-  constructor(private userS: UserService, private fb: FormBuilder) {}
+  constructor(private userS: UserService) {}
 
   ngOnInit() {
  
   }
-
-
-  addUserMainInfo(event: User) {
+ addUserMainInfo(event: User) {
     this.userMainInfo = event;
     this.stepper.next();
   
@@ -38,20 +37,15 @@ get userValue() {
   return {...this.userMainInfo, ...this.addressInfo}
 }
 
-onPostData() {
+onSave() {
   const User = {...this.userMainInfo, ...this.addressInfo}
-  this.userS.createUser(User).subscribe(
+  this.userS.createUser(User).pipe(take(1)).subscribe(
     (response) => console.log(`post: ${response}`)
   );
 }
 
 goBack() {
   this.stepper.previous();
-;}
-
-onSave() {
-  this.onPostData();
 }
-
 
 }

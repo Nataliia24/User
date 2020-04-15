@@ -1,10 +1,8 @@
 import { Component, OnInit, Output } from '@angular/core';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { compareValidator } from 'src/app/compare/compare-validator.directive';
-import { User } from '../models/users';
+import { User } from '../../models/users';
 import { EventEmitter } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-create',
@@ -17,9 +15,7 @@ export class CreateComponent implements OnInit {
 
   @Output() sendUserMainInfo: EventEmitter<User> = new EventEmitter();
 
-  constructor(private fb: FormBuilder, 
-    private route: ActivatedRoute,
-    private userService: UserService) {}
+  constructor(private fb: FormBuilder) {}
 
   ngOnInit(): void {
     this.signupForm = this.fb.group({

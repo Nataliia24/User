@@ -2,7 +2,7 @@ import { Component, OnInit, Output } from '@angular/core';
 import { DataService } from '../../services/data.service';
 import { FormGroup, Validators, FormArray, FormBuilder } from '@angular/forms';
 import { EventEmitter } from '@angular/core';
-import { Country } from '../models/country.model';
+import { Country } from '../../models/country.model';
 
 
 interface Address {

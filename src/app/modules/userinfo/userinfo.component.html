@@ -20,6 +20,10 @@
             <input matInput type="text" placeholder="Phone" [(ngModel)]="userPhoneSearch">
         </mat-form-field>
     </div>
+    <div class="d-flex justify-content-start my-3">
+        <button mat-raised-button color="primary">Clear</button>
+        <button mat-raised-button color="primary" (click)="onFind()" class="ml-2">Find</button>
+    </div>
 </div>
 
 <table *ngIf="users" class="table">
@@ -48,12 +52,12 @@
                 </button>
             </td>
             <td>
-                <button type="button" class="btn btn-danger" (click)="deleteUser(user)">
+                <button type="button" class="btn btn-danger" (click)="openDialog('Delete',user)">
                     Delete
                 </button>
             </td>
             <td>
-                <button type="button" class="btn btn-danger" (click)="updateUser(user)">
+                <button type=" button " class="btn btn-danger " (click)="updateUser(user.id) ">
                     Update
                 </button>
             </td>
@@ -61,9 +65,9 @@
     </tbody>
 </table>
 
-<div *ngIf="showAddr">
+<div *ngIf="showAddr ">
     <h1>Addresses table</h1>
-    <table class="table">
+    <table class="table ">
         <thead>
             <tr>
                 <th>Address type</th>
@@ -75,14 +79,14 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let address of userAddresses">
+            <tr *ngFor="let address of userAddresses ">
                 <td>{{address.type}}</td>
                 <td>{{address.address}}</td>
                 <td>{{address.city}}</td>
                 <td>{{address.country}}</td>
                 <td>{{address.code}}</td>
                 <td>
-                    <button type="button" class="btn btn-info" (click)="closeAddresses()">
+                    <button type="button " class="btn btn-info " (click)="closeAddresses() ">
                         Close
                     </button>
                 </td>

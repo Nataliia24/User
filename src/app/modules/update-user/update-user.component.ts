@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
-import { User } from '../models/users';
+import { User } from '../../models/users';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { take } from 'rxjs/operators';
 
 @Component({
   selector: 'app-update-user',
@@ -13,7 +14,6 @@ export class UpdateUserComponent implements OnInit {
   
   id:number;
   user: User;
-  
   firstName = this.fb.control('', Validators.required);
   lastName = this.fb.control('', Validators.required);
   userName = this.fb.control('', Validators.required);
@@ -35,8 +35,8 @@ export class UpdateUserComponent implements OnInit {
 
   ngOnInit(): void {
     this.id = this.route.snapshot.params['id'];
-
-    this.userService.getUsersById(this.id).subscribe(
+    console.log(this.route.snapshot.params['id']);
+    this.userService.getUsersById(this.id).pipe(take(1)).subscribe(
       data => {
         this.user = data;
         this.updateForm.patchValue(data) 
@@ -44,17 +44,11 @@ export class UpdateUserComponent implements OnInit {
   }
 
   updateUser() {
-    this.userService.updateUser(this.updateForm.value, this.user.id).subscribe(
+    this.userService.updateUser(this.updateForm.value, this.user.id).pipe(take(1)).subscribe(
       () => {
-        this.goToList();
+        this.router.navigate(['/user-info']);
       }
     )
   }
-
-
-  goToList() {
-    this.router.navigate(['/user-info']);
-  }
-
 
 }
