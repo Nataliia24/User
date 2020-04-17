@@ -23,7 +23,7 @@
                             <mat-form-field class="example-full-width" hideRequiredMarker>
                                 <mat-label>Address</mat-label>
                                 <input matInput placeholder="Address" formControlName="address" required>
-                                <mat-error *ngIf="addressArray.get('address') && !addressForm.get('address').valid && addressForm.get('address').touched">Enter valid address</mat-error>
+                                <mat-error *ngIf="addressForm.get('address') && !addressForm.get('address').valid && addressForm.get('address').touched">Enter valid address</mat-error>
                             </mat-form-field>
                         </div>
 
