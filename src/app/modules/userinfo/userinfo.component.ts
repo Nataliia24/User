@@ -18,6 +18,7 @@ export class UserinfoComponent implements OnInit {
   users: User[] = [];
   userAddresses: Address[]= [];
   showAddr = false;
+  currentAddressUserId: number;
   firstNameSearch: string;
   lastNameSearch: string;
   userNameSearch: string;
@@ -30,7 +31,8 @@ export class UserinfoComponent implements OnInit {
     })
   }
 
-  openAddresses(user) { 
+  openAddresses(user: User) { 
+    this.currentAddressUserId = user.id;
     this.showAddr = true;
     this.userAddresses = this.users.find(elem => elem.userName === user.userName).userAddresses;
   }
@@ -41,28 +43,32 @@ export class UserinfoComponent implements OnInit {
     }
   }
 
-  openDialog(action,obj) {
-    obj.action = action;
+  openDialog(user: User) {
     const dialogRef = this.dialog.open(DialogBoxComponent, {
       width: '250px',
-      data:obj
+      data:user
     });
 
     dialogRef.afterClosed().pipe(take(1)).subscribe(result => {
-      if(result.event == 'Delete'){
+      console.log(result);
+      if(result.data){
         this.deleteUser(result.data);
       }
     });
   }
 
-  deleteUser(user: User) {
-    this.userService.deleteUser(user.id).pipe(take(1)).subscribe(() => {
-      this.users = this.users.filter(u => u !== user);
+  deleteUser(id: number) {
+    this.userService.deleteUser(id).pipe(take(1)).subscribe(() => {
+      this.users = this.users.filter(u => u.id !== id);
   });
   }
 
   updateUser(id: number) {
     this.router.navigate([`/updateuser/${id}`])
+  }
+
+  updateAddress(addressId: number) {
+    this.router.navigate(['/update-address'], { queryParams: { userId: this.currentAddressUserId, addressId } });
   }
 
   closeAddresses() {

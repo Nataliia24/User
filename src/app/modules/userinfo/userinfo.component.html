@@ -52,7 +52,7 @@
                 </button>
             </td>
             <td>
-                <button type="button" class="btn btn-danger" (click)="openDialog('Delete',user)">
+                <button type="button" class="btn btn-danger" (click)="openDialog(user)">
                     Delete
                 </button>
             </td>
@@ -88,6 +88,11 @@
                 <td>
                     <button type="button " class="btn btn-info " (click)="closeAddresses() ">
                         Close
+                    </button>
+                </td>
+                <td>
+                    <button type=" button " class="btn btn-danger " (click)="updateAddress(address.id) ">
+                        Update
                     </button>
                 </td>
             </tr>

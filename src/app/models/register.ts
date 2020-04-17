@@ -4,5 +4,4 @@ export interface Register {
     lastName: string;
     userName: string;
     password: string;
-    token: string;
 }

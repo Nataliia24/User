@@ -21,7 +21,7 @@ export class AuthenticationService {
     login(userName: string, password: string) {
         return this.http.post<Register>(`/register/authenticate`, { userName, password })
             .pipe(map(user => {
-                if (user && user.token) {
+                if (user) {
                     localStorage.setItem('currentUser', JSON.stringify(user));
                     this.currentUserSubject.next(user);
                 }

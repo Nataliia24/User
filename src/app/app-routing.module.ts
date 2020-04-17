@@ -10,6 +10,7 @@ import { CreateComponent } from './modules/create/create.component';
 import { UpdateUserComponent } from './modules/update-user/update-user.component';
 import { RegisterComponent } from './modules/register/register.component';
 import { LoginComponent } from './modules/login/login.component';
+import { UpdateAddressComponent } from './modules/update-address/update-address.component';
 
 
 const routes: Routes = [{
@@ -40,6 +41,10 @@ const routes: Routes = [{
   {
     path: 'updateuser/:id',
     component: UpdateUserComponent
+  },
+  {
+    path: 'update-address',
+    component: UpdateAddressComponent
   },
   {
     path: 'login',

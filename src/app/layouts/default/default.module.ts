@@ -30,6 +30,7 @@ import { UserFilterPipe } from 'src/app/modules/userinfo/user-filter.pipe';
 import { DialogBoxComponent } from 'src/app/modules/dialog-box/dialog-box.component';
 import { LoginComponent } from 'src/app/modules/login/login.component';
 import { RegisterComponent } from 'src/app/modules/register/register.component';
+import { UpdateAddressComponent } from 'src/app/modules/update-address/update-address.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { RegisterComponent } from 'src/app/modules/register/register.component';
     AddressComponent,
     RegistrationComponent,
     UpdateUserComponent,
+    UpdateAddressComponent,
     UserFilterPipe,
     DialogBoxComponent,
     LoginComponent,

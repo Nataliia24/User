@@ -43,7 +43,7 @@ export class RegisterComponent implements OnInit {
         if (this.registerForm.invalid) {
             return;
         }
-
+        console.log(this.registerForm.value);
         this.loading = true;
         this.registerService.register(this.registerForm.value)
             .pipe(take(1))

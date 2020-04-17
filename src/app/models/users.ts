@@ -10,6 +10,7 @@ export interface User {
 }
 
 export interface Address {
+    id: number;
     type: string;
     address: string;
     city: string;

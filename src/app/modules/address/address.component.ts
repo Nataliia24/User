@@ -42,7 +42,8 @@ export class AddressComponent implements OnInit {
   }
 
 onSubmit(): void {
-    this.sendAddessInfo.emit(this.addressForm.value);
+    const id = new Date().getTime();
+    this.sendAddessInfo.emit({...this.addressForm.value , id});
 }
 
 

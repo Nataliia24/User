@@ -40,7 +40,9 @@ get userValue() {
 onSave() {
   const User = {...this.userMainInfo, ...this.addressInfo}
   this.userS.createUser(User).pipe(take(1)).subscribe(
-    (response) => console.log(`post: ${response}`)
+    (response) => {
+      this.users = [...this.users, response]
+    }
   );
 }
 

@@ -14,26 +14,25 @@ export class UpdateUserComponent implements OnInit {
   
   id:number;
   user: User;
-  firstName = this.fb.control('', Validators.required);
-  lastName = this.fb.control('', Validators.required);
-  userName = this.fb.control('', Validators.required);
-  phone = this.fb.control('', [Validators.required, Validators.pattern("[0-9 ]{12}")]);
-  email = this.fb.control('', [Validators.required, Validators.email]);
-  updateForm: FormGroup = this.fb.group({
-    firstName: this.firstName,
-    lastName: this.lastName,
-    userName: this.userName,
-    phone: this.phone,
-    email: this.email
-  });
+  updateForm: FormGroup;
+  
 
 
   constructor(private route: ActivatedRoute, 
     private router: Router, 
     private userService: UserService,
     private fb: FormBuilder) { }
+    
 
   ngOnInit(): void {
+    this.updateForm = this.fb.group({
+      firstName: this.fb.control('', Validators.required),
+      lastName: this.fb.control('', Validators.required),
+      userName: this.fb.control('', Validators.required),
+      phone: this.fb.control('', [Validators.required, Validators.pattern("[0-9 ]{12}")]),
+      email: this.fb.control('', [Validators.required, Validators.email]),
+    })
+
     this.id = this.route.snapshot.params['id'];
     console.log(this.route.snapshot.params['id']);
     this.userService.getUsersById(this.id).pipe(take(1)).subscribe(

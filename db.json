@@ -8,6 +8,7 @@
             "password": "nat2499",
             "confirmpassword": "nat2499",
             "userAddresses": [{
+                "id": 1,
                 "type": "home-0",
                 "address": "street Bilasa and Danylyshyn",
                 "city": "Mykolaiv",
@@ -17,18 +18,50 @@
             "id": 1
         },
         {
-            "firstName": "Olena",
-            "lastName": "Salamakha",
-            "userName": "Olena",
-            "phone": "380504569874",
+            "firstName": "dsbdbbfd",
+            "lastName": "bfdbfdb",
+            "userName": "dfbfdbddb",
+            "phone": "380635621245",
+            "email": "oprusko@gmail.com",
+            "password": "123456",
+            "confirmpassword": "123456",
+            "userAddresses": [{
+                "id": 2,
+                "type": "billiding-1",
+                "address": "dsbfdb",
+                "city": "fdfdbnfdn",
+                "country": "Åland Islands",
+                "code": 12345
+            }],
+            "id": 2
+        },
+        {
+            "firstName": "Denus",
+            "lastName": "fdbfdfdfdb",
+            "userName": "dfbfdb",
+            "phone": "380635621245",
             "email": "olena.salamakha@gmail.com",
+            "password": "123456",
+            "confirmpassword": "123456",
+            "userAddresses": [{
+
+                "id": 2,
+                "type": "billiding-1",
+                "address": "dfbfdbfd",
+                "city": "fdbdfb",
+                "country": "Albania",
+                "code": 12345
+            }],
             "id": 3
+        },
+        {
+            "firstName": "dssdbsdbsd",
+            "lastName": "dsbdsb",
+            "userName": "dssdb",
+            "phone": "380635621245",
+            "email": "oprusko@gmail.com",
+            "id": 4
         }
     ],
-    "Register": [{
-        "firstName": "Olena",
-        "lastName": "Salamakha",
-        "userName": "Olena",
-        "password": "123456"
-    }]
+    "Register": []
 }

@@ -13,6 +13,7 @@ export class RegisterService {
   urlRegister: string = "http://localhost:3000/Register";
 
   register(register: Register):Observable<Register[]> {
-    return this.http.post<Register[]>(this.urlRegister, JSON.stringify(register))
+    console.log(JSON.stringify(register));
+    return this.http.post<Register[]>(this.urlRegister, register)
   }
 }
