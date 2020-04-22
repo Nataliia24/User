@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { User } from '../modules/models/users';
+import { User, Address } from '../models/users';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -17,7 +17,7 @@ export class UserService {
   constructor(private http: HttpClient) { }
   
 
-  url: string = "http://localhost:3000/Users/";
+  url: string = "http://localhost:3000/Users";
 
   getUsers():Observable<User[]>
   {
@@ -25,18 +25,22 @@ export class UserService {
   }
 
   getUsersById(id: number): Observable<User> {
-    return this.http.get<User>(this.url + id);
+    return this.http.get<User>(`${this.url}/${id}`);
   }
 
- createUser(user: User): Observable<User[]> {
-   return this.http.post<User[]>(this.url, JSON.stringify(user), httpOptions);
+ createUser(user: User): Observable<User> {
+   return this.http.post<User>(this.url, user);
  }
 
  deleteUser(id: number): Observable<{}> {
   return this.http.delete(`${this.url}/${id}`, httpOptions);
  }
 
- updateUser(user: User): Observable<User> {
-  return this.http.put<User>(this.url + user.id, user);
+ updateUser(user: User, id: number): Observable<User> {
+  return this.http.patch<User>(`${this.url}/${id}`, user);
+ }
+
+ updateAddress(userAddresses: Address, id: number): Observable<Address> {
+   return this.http.patch<Address>(`${this.url}/${id}`, userAddresses)
  }
 }

@@ -3,59 +3,76 @@
     {
       "firstName": "Nataliia",
       "lastName": "Oprysko",
-      "userName": "Natalia",
-      "phone": "380935221428",
+      "userName": "Nataliia",
+      "phone": "380635621245",
       "email": "opruskon24@gmail.com",
-      "password": "123456",
-      "confirmpassword": "123456",
+      "password": "nat2499",
+      "confirmpassword": "nat2499",
       "userAddresses": [
         {
-          "type": "billiding-1",
-          "address": "cx cx ",
-          "city": "xc cx",
-          "country": "Barbados",
-          "code": 12345
+          "id": 1,
+          "type": "home-0",
+          "address": "street Bilasa and Danylyshyn",
+          "city": "Mykolaiv",
+          "country": "Ukraine",
+          "code": 81634
         }
       ],
       "id": 1
     },
     {
-      "firstName": "dsvsd",
-      "lastName": "dbdfb",
-      "userName": "fdbdd",
-      "phone": "380935221428",
+      "firstName": "dsbdbbfd",
+      "lastName": "bfdbfdb",
+      "userName": "dfbfdbddb",
+      "phone": "380635621245",
       "email": "oprusko@gmail.com",
       "password": "123456",
       "confirmpassword": "123456",
       "userAddresses": [
         {
+          "id": 2,
           "type": "billiding-1",
-          "address": "dvx",
-          "city": "xv cx",
-          "country": "Albania",
-          "code": 25634
-        }
-      ],
-      "id": 2
-    },
-    {
-      "firstName": "c c",
-      "lastName": "cc vc  c",
-      "userName": " vc ",
-      "phone": "380935221428",
-      "email": "opruskon24@gmail.com",
-      "password": "123456",
-      "confirmpassword": "123456",
-      "userAddresses": [
-        {
-          "type": "shipment-2",
-          "address": "c c",
-          "city": "c  v",
+          "address": "dsbfdb",
+          "city": "fdfdbnfdn",
           "country": "Åland Islands",
           "code": 12345
         }
       ],
+      "id": 2,
+      "type": "billiding-1",
+      "address": "dsbfdb",
+      "city": "fdfdbnfdn",
+      "country": "Åland Islands",
+      "code": 12346
+    },
+    {
+      "firstName": "Denus",
+      "lastName": "fdbfdfdfdb",
+      "userName": "dfbfdb",
+      "phone": "380635621245",
+      "email": "olena.salamakha@gmail.com",
+      "password": "123456",
+      "confirmpassword": "123456",
+      "userAddresses": [
+        {
+          "id": 2,
+          "type": "billiding-1",
+          "address": "dfbfdbfd",
+          "city": "fdbdfb",
+          "country": "Albania",
+          "code": 12345
+        }
+      ],
       "id": 3
+    },
+    {
+      "firstName": "dssdbsdbsd",
+      "lastName": "dsbdsb",
+      "userName": "dssdb",
+      "phone": "380635621245",
+      "email": "oprusko@gmail.com",
+      "id": 4
     }
-  ]
+  ],
+  "Register": []
 }

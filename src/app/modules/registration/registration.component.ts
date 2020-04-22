@@ -1,12 +1,10 @@
-import { Component} from '@angular/core';
-import { User, Address } from '../models/users';
+import { Component, ViewChild} from '@angular/core';
+import { User, Address } from '../../models/users';
 import { UserService } from 'src/app/services/user.service';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
+import { MatStepper } from '@angular/material/stepper';
+import { take } from 'rxjs/operators';
 
-export enum PageContent {
-USER_FORM="USER_FORM",
-ADDRESS_FORM="ADDRESS_FORM",
-};
 @Component({
   selector: 'app-registration',
   templateUrl: './registration.component.html',
@@ -15,44 +13,41 @@ ADDRESS_FORM="ADDRESS_FORM",
 export class RegistrationComponent {
   users: User[] = [];
   userMainInfo: User;
-  addressInfo: Address[];
-  pageContent: PageContent = PageContent.USER_FORM;
+  addressInfo: Address;
   userForm: FormGroup;
- 
+ @ViewChild(MatStepper) stepper: MatStepper;
 
-  constructor(private userS: UserService, private fb: FormBuilder) {}
+  constructor(private userS: UserService) {}
 
   ngOnInit() {
-    this.userForm = this.fb.group({
-      firstName: null,
-      lastName: null,
-      userName: null,
-      phone: null,
-      email: null,
-      password: null,
-      type: null,
-      city: null,
-      country: null,
-      street: null,
-      code: null,
-      additionalAddress: null,
-    });
+ 
   }
-
-  addUserMainInfo(event: User) {
+ addUserMainInfo(event: User) {
     this.userMainInfo = event;
-    this.pageContent = PageContent.ADDRESS_FORM;
+    this.stepper.next();
   
 }
 
-addAddressInfo(event: Address[]) {
-  const User = {...this.userMainInfo, ...event}
-  this.userS.createUser(User).subscribe();
-  this.pageContent = null;
+addAddressInfo(event: Address) {
+  this.addressInfo = event;
+  this.stepper.next();
 }
 
-setPageContent(content: PageContent) {
-  this.pageContent = content;
+get userValue() {
+  return {...this.userMainInfo, ...this.addressInfo}
+}
+
+onSave() {
+  const User = {...this.userMainInfo, ...this.addressInfo}
+  this.userS.createUser(User).pipe(take(1)).subscribe(
+    (response) => {
+      this.users = [...this.users, response]
+    }
+  );
+}
+
+goBack() {
+  this.stepper.previous();
 }
 
 }

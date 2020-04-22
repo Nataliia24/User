@@ -17,11 +17,20 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTableModule } from '@angular/material/table';
+import { MatStepperModule } from '@angular/material/stepper';
+import {MatDialogModule} from '@angular/material/dialog';
+import { ConfirmationPopoverModule } from 'angular-confirmation-popover';
 
 
 import { HttpClientModule } from '@angular/common/http';
 import { DataService } from 'src/app/services/data.service';
 import { UserService } from 'src/app/services/user.service';
+import { UpdateUserComponent } from 'src/app/modules/update-user/update-user.component';
+import { UserFilterPipe } from 'src/app/modules/userinfo/user-filter.pipe';
+import { DialogBoxComponent } from 'src/app/modules/dialog-box/dialog-box.component';
+import { LoginComponent } from 'src/app/modules/login/login.component';
+import { RegisterComponent } from 'src/app/modules/register/register.component';
+import { UpdateAddressComponent } from 'src/app/modules/update-address/update-address.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +39,13 @@ import { UserService } from 'src/app/services/user.service';
     UserinfoComponent,
     CreateComponent,
     AddressComponent,
-    RegistrationComponent
+    RegistrationComponent,
+    UpdateUserComponent,
+    UpdateAddressComponent,
+    UserFilterPipe,
+    DialogBoxComponent,
+    LoginComponent,
+    RegisterComponent
     
   ],
   imports: [
@@ -44,9 +59,17 @@ import { UserService } from 'src/app/services/user.service';
     MatFormFieldModule,
     MatInputModule,
     MatSelectModule,
+    MatDialogModule,
     MatButtonModule,
     MatTableModule,
-    HttpClientModule
+    MatStepperModule,
+    HttpClientModule,
+    ConfirmationPopoverModule.forRoot({
+      confirmButtonType: 'danger' // set defaults here
+    })
+],
+entryComponents: [
+  DialogBoxComponent
 ],
 providers: [DataService, UserService],
 })

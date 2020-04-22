@@ -1,5 +1,30 @@
 <h1>User info table</h1>
 <hr>
+<div class="search">
+    <div class="form-group d-flex justify-content-between">
+        <mat-form-field class="col-md-6">
+            <input matInput type="text" placeholder="First Name" [(ngModel)]="firstNameSearch">
+        </mat-form-field>
+        <mat-form-field class="col-md-6">
+            <input matInput type="text" placeholder="Last Name" [(ngModel)]="lastNameSearch">
+        </mat-form-field>
+    </div>
+    <div class="form-group d-flex justify-content-between">
+        <mat-form-field class="col-md-4">
+            <input matInput type="text" placeholder="User Name" [(ngModel)]="userNameSearch">
+        </mat-form-field>
+        <mat-form-field class="col-md-4">
+            <input matInput type="text" placeholder="Email" [(ngModel)]="userEmailSearch">
+        </mat-form-field>
+        <mat-form-field class="col-md-4">
+            <input matInput type="text" placeholder="Phone" [(ngModel)]="userPhoneSearch">
+        </mat-form-field>
+    </div>
+    <div class="d-flex justify-content-start my-3">
+        <button mat-raised-button color="primary">Clear</button>
+        <button mat-raised-button color="primary" (click)="onFind()" class="ml-2">Find</button>
+    </div>
+</div>
 
 <table *ngIf="users" class="table">
     <thead>
@@ -14,7 +39,7 @@
             <th></th>
         </tr>
     </thead>
-    <tbody *ngFor="let user of users">
+    <tbody *ngFor="let user of users | userFilter: firstNameSearch:lastNameSearch:userNameSearch:userEmailSearch:userPhoneSearch">
         <tr>
             <td>{{user.firstName}}</td>
             <td>{{user.lastName}}</td>
@@ -27,12 +52,12 @@
                 </button>
             </td>
             <td>
-                <button type="button" class="btn btn-danger" (click)="deleteUser(user)">
+                <button type="button" class="btn btn-danger" (click)="openDialog(user)">
                     Delete
                 </button>
             </td>
             <td>
-                <button type="button" class="btn btn-danger" (click)="updateUser(user.id)">
+                <button type=" button " class="btn btn-danger " (click)="updateUser(user.id) ">
                     Update
                 </button>
             </td>
@@ -40,9 +65,9 @@
     </tbody>
 </table>
 
-<div *ngIf="showAddr">
+<div *ngIf="showAddr ">
     <h1>Addresses table</h1>
-    <table class="table">
+    <table class="table ">
         <thead>
             <tr>
                 <th>Address type</th>
@@ -54,15 +79,20 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let address of userAddresses">
+            <tr *ngFor="let address of userAddresses ">
                 <td>{{address.type}}</td>
                 <td>{{address.address}}</td>
                 <td>{{address.city}}</td>
                 <td>{{address.country}}</td>
                 <td>{{address.code}}</td>
                 <td>
-                    <button type="button" class="btn btn-info" (click)="closeAddresses()">
+                    <button type="button " class="btn btn-info " (click)="closeAddresses() ">
                         Close
+                    </button>
+                </td>
+                <td>
+                    <button type=" button " class="btn btn-danger " (click)="updateAddress(address.id) ">
+                        Update
                     </button>
                 </td>
             </tr>

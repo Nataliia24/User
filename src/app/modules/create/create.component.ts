@@ -1,10 +1,8 @@
 import { Component, OnInit, Output } from '@angular/core';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { compareValidator } from 'src/app/compare/compare-validator.directive';
-import { User } from '../models/users';
+import { User } from '../../models/users';
 import { EventEmitter } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-create',
@@ -17,9 +15,7 @@ export class CreateComponent implements OnInit {
 
   @Output() sendUserMainInfo: EventEmitter<User> = new EventEmitter();
 
-  constructor(private fb: FormBuilder, 
-    private route: ActivatedRoute,
-    private userService: UserService) {}
+  constructor(private fb: FormBuilder) {}
 
   ngOnInit(): void {
     this.signupForm = this.fb.group({
@@ -31,31 +27,6 @@ export class CreateComponent implements OnInit {
       'password': this.fb.control(null, [Validators.required, Validators.minLength(6)]),
       'confirmpassword': this.fb.control(null, [Validators.required, compareValidator('password')])
     });
-
-    this.route.paramMap.subscribe(params => {
-      const userId = +params.get('id');
-      if (userId){
-        this.getUser(userId);
-      }
-    });
-  }
-
-  getUser(id: number) {
-    this.userService.getUsersById(id).subscribe(
-      (user: User) => this.updateUser(user)
-    );
-  }
-
-  updateUser(user: User) {
-    this.signupForm.patchValue({
-      'firstName': this.fb.control(null, Validators.required),
-      'lastName': this.fb.control(null, Validators.required),
-      'userName': this.fb.control(null, Validators.required),
-      'phone': this.fb.control(null, [Validators.required, Validators.pattern("[0-9 ]{12}")]),
-      'email': this.fb.control(null, [Validators.required, Validators.email]),
-      'password': this.fb.control(null, [Validators.required, Validators.minLength(6)]),
-      'confirmpassword': this.fb.control(null, [Validators.required, compareValidator('password')])
-    })
   }
 
   onNextClick(): void {
