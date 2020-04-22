@@ -66,12 +66,10 @@ export class UpdateAddressComponent implements OnInit {
   }
 
   updateAddress() {
-    this.userService.updateUser(this.addressForm.value, this.addressId).pipe(take(1)).subscribe(
+    this.userService.updateAddress(this.addressForm.value, this.address.id).pipe(take(1)).subscribe(
       () => {
         this.router.navigate(['/user-info']);
       }
     )
   }
   }
-
-

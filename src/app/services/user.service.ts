@@ -40,7 +40,7 @@ export class UserService {
   return this.http.patch<User>(`${this.url}/${id}`, user);
  }
 
- updateAddress(userAddresses: Address): Observable<Address> {
-   return this.http.patch<Address>(this.url, userAddresses)
+ updateAddress(userAddresses: Address, id: number): Observable<Address> {
+   return this.http.patch<Address>(`${this.url}/${id}`, userAddresses)
  }
 }
